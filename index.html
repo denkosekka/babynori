@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <!-- Ganti URL di bawah ini dengan URL Web App Google Apps Script Anda -->
+    <script>
+        // MASUKKAN URL GOOGLE APPS SCRIPT ANDA DI SINI
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx9_4hOqw7wVBycKSzhh4K3DrclbVswLsOwssIwqyhp0g2M0Eac6XZGm28yvjkNdaqs/exec";
+
+        // Fungsi untuk mengarahkan dengan meneruskan parameter URL (jika ada)
+        function redirect() {
+            const currentParams = window.location.search;
+            const targetUrl = APPS_SCRIPT_URL + currentParams;
+            window.location.replace(targetUrl);
+        }
+
+        // Jalankan redirect saat halaman dimuat
+        window.onload = redirect;
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            max-width: 420px;
+            width: 100%;
+        }
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #e0e0e0;
+            border-bottom-color: #4285f4;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            margin-bottom: 24px;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        h2 {
+            font-size: 20px;
+            color: #1a73e8;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .manual-link {
+            display: inline-block;
+            color: #4285f4;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            word-break: break-all;
+        }
+        .manual-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="spinner"></div>
+        <h2>Mengalihkan halaman...</h2>
+        <p>Anda sedang diarahkan ke aplikasi Google Apps Script. Jika halaman tidak beralih otomatis, silakan klik tombol/tautan di bawah ini:</p>
+        <a id="redirect-btn" class="manual-link" href="#">Klik di sini jika tidak diarahkan otomatis</a>
+    </div>
+
+    <script>
+        // Set href untuk link manual sebagai fallback
+        document.getElementById("redirect-btn").href = APPS_SCRIPT_URL + window.location.search;
+    </script>
+</body>
+</html>
